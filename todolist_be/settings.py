@@ -25,7 +25,7 @@ SECRET_KEY = 'yp903(n&%_#8zamssac1cxar743vf3^eo#_4z*))!4bn-0e2r='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'todolist-be.herokuapp.com']
 
 
 # Application definition
@@ -140,3 +140,14 @@ AUTH_USER_MODEL = 'user.user'
 APPEND_SLASH = True
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# heroku setup
+try:
+    import django_heroku
+    django_heroku.settings(locals(), test_runner=False)
+except ImportError:
+    found = False
+
+if 'DATABASE_URL' in os.environ:
+    import dj_database_url
+    DATABASES = {'default': dj_database_url.config()}

@@ -4,3 +4,6 @@ django-cors-headers
 django-rest-auth
 djangorestframework
 gunicorn
+django-heroku
+dj-database-url
+psycopg2
